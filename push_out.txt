@@ -1,0 +1,92 @@
+git : remote: error: 
+GH013: Repository rule 
+violations found for 
+refs/heads/main.        
+At line:1 char:1
++ git push -u origin main 
+2>&1 | Out-String | 
+Set-Content push_out.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~
+    + CategoryInfo        
+      : NotSpecified: (r  
+  emote: error: ...s/ma   
+ in.        :String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+remote: 
+remote: - GITHUB PUSH 
+PROTECTION        
+remote:   GÇöGÇöGÇöGÇöGÇöG
+ÇöGÇöGÇöGÇöGÇöGÇöGÇöGÇöGÇö
+GÇöGÇöGÇöGÇöGÇöGÇöGÇöGÇöGÇ
+öGÇöGÇöGÇöGÇöGÇöGÇöGÇöGÇöG
+ÇöGÇöGÇöGÇöGÇöGÇöGÇöGÇöGÇö
+GÇö        
+remote:     Resolve the 
+following violations 
+before pushing again      
+  
+remote: 
+remote:     - Push cannot 
+contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn 
+how to resolve a blocked 
+push        
+remote:      https://docs.
+github.com/code-security/s
+ecret-scanning/working-wit
+h-secret-scanning-and-push
+-protection/working-with-p
+ush-protection-from-the-co
+mmand-line#resolving-a-blo
+cked-push        
+remote:             
+remote:             
+remote:       GÇöGÇö 
+Google Cloud Service 
+Account Credentials GÇöGÇö
+GÇöGÇöGÇöGÇöGÇöGÇöGÇöGÇö  
+      
+remote:        locations: 
+       
+remote:          - 
+commit: 066cbdb9deaa8c5713
+074d4ce5e29b6dfe51f2eb    
+    
+remote:            path: p
+roject1/project1/backend/f
+irebase-service-account.js
+on:1        
+remote:             
+remote:        (?) To 
+push, remove secret from 
+commit(s) or follow this 
+URL to allow the secret.  
+      
+remote:        https://git
+hub.com/sasankpanuganti/sk
+illladder/security/secret-
+scanning/unblock-secret/3B
+fbePADsSsWeIplwqjhHbpoe36 
+       
+remote:             
+remote: 
+remote: 
+To https://github.com/sasa
+nkpanuganti/skillladder.gi
+t
+ ! [remote rejected] main 
+-> main (push declined 
+due to repository rule 
+violations)
+error: failed to push 
+some refs to 'https://gith
+ub.com/sasankpanuganti/ski
+llladder.git'
+
