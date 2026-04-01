@@ -3,6 +3,7 @@ import ResumeATS from "../ResumeATS";
 import JobRecommendations from "../JobRecommendations";
 import Activities from "../Activities";
 import LearnPlatform from "../LearnPlatform";
+import LearnTutorials from "../LearnTutorials";
 import Compiler from "../Compiler";
 
 export default function JobSeekerDashboard({ user, scanResult, activeSection, setActiveSection }) {
@@ -126,6 +127,8 @@ export default function JobSeekerDashboard({ user, scanResult, activeSection, se
         return <Activities user={user} />;
       case 'learn-platform':
         return <LearnPlatform user={user} />;
+      case 'learn':
+        return <LearnTutorials user={user} />;
       case 'compiler':
         return <Compiler user={user} />;
       default:
