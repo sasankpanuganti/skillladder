@@ -24,9 +24,9 @@ class FirebaseService:
                     cred = credentials.Certificate(service_account_path)
                     firebase_admin.initialize_app(cred)
                     self.db = firestore.client()
-                    print("✅ Firebase Admin SDK initialized successfully")
+                    print("[OK] Firebase Admin SDK initialized successfully")
                 except Exception as e:
-                    print(f"❌ Error initializing Firebase: {e}")
+                    print(f"[ERR] Error initializing Firebase: {e}")
                     self.db = None
                     return
             else:
@@ -34,7 +34,7 @@ class FirebaseService:
                 try:
                     firebase_admin.initialize_app()
                     self.db = firestore.client()
-                    print("✅ Firebase Admin SDK initialized successfully")
+                    print("[OK] Firebase Admin SDK initialized successfully")
                 except Exception as e:
                     print(f"Warning: Could not initialize Firebase Admin SDK: {e}")
                     print("Using mock Firebase mode")
@@ -43,7 +43,7 @@ class FirebaseService:
         else:
             # Firebase already initialized
             self.db = firestore.client()
-            print("✅ Firebase Admin SDK already initialized")
+            print("[OK] Firebase Admin SDK already initialized")
     
     # ===== USER MANAGEMENT =====
     async def create_user(self, user_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -88,11 +88,11 @@ class FirebaseService:
             user_data['created_at'] = user_doc['created_at'].isoformat()
             user_data['updated_at'] = user_doc['updated_at'].isoformat()
             
-            print(f"✅ User created in Firebase: {user_data['email']}")
+            print(f"[OK] User created in Firebase: {user_data['email']}")
             return user_data
             
         except Exception as e:
-            print(f"❌ Error creating user in Firebase: {e}")
+            print(f"[ERR] Error creating user in Firebase: {e}")
             raise Exception(f"Failed to create user: {str(e)}")
     
     async def get_user_by_email(self, email: str, include_password: bool = False) -> Optional[Dict[str, Any]]:
@@ -131,7 +131,7 @@ class FirebaseService:
             return None
             
         except Exception as e:
-            print(f"❌ Error getting user from Firebase: {e}")
+            print(f"[ERR] Error getting user from Firebase: {e}")
             return None
     
     async def get_user_by_id(self, user_id: str) -> Optional[Dict[str, Any]]:
@@ -160,7 +160,7 @@ class FirebaseService:
             return None
             
         except Exception as e:
-            print(f"❌ Error getting user by ID from Firebase: {e}")
+            print(f"[ERR] Error getting user by ID from Firebase: {e}")
             return None
     
     # ===== JOB MANAGEMENT =====
@@ -201,11 +201,11 @@ class FirebaseService:
             job_data['created_at'] = job_doc['created_at'].isoformat()
             job_data['updated_at'] = job_doc['updated_at'].isoformat()
             
-            print(f"✅ Job created in Firebase: {job_data['title']}")
+            print(f"[OK] Job created in Firebase: {job_data['title']}")
             return job_data
             
         except Exception as e:
-            print(f"❌ Error creating job in Firebase: {e}")
+            print(f"[ERR] Error creating job in Firebase: {e}")
             raise Exception(f"Failed to create job: {str(e)}")
     
     async def get_jobs(self, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
@@ -242,7 +242,7 @@ class FirebaseService:
             return jobs
             
         except Exception as e:
-            print(f"❌ Error getting jobs from Firebase: {e}")
+            print(f"[ERR] Error getting jobs from Firebase: {e}")
             return []
     
     # ===== APPLICATION MANAGEMENT =====
@@ -276,11 +276,11 @@ class FirebaseService:
             application_data['created_at'] = app_doc['created_at'].isoformat()
             application_data['updated_at'] = app_doc['updated_at'].isoformat()
             
-            print(f"✅ Application created in Firebase: {application_data['user_email']} -> {application_data['job_title']}")
+            print(f"[OK] Application created in Firebase: {application_data['user_email']} -> {application_data['job_title']}")
             return application_data
             
         except Exception as e:
-            print(f"❌ Error creating application in Firebase: {e}")
+            print(f"[ERR] Error creating application in Firebase: {e}")
             raise Exception(f"Failed to create application: {str(e)}")
     
     async def get_applications(self, job_id: int = None, user_email: str = None) -> List[Dict[str, Any]]:
@@ -315,7 +315,7 @@ class FirebaseService:
             return applications
             
         except Exception as e:
-            print(f"❌ Error getting applications from Firebase: {e}")
+            print(f"[ERR] Error getting applications from Firebase: {e}")
             return []
     
     # ===== MOCK TEST RESULTS =====
@@ -346,11 +346,11 @@ class FirebaseService:
             result_data['id'] = result_id
             result_data['submitted_at'] = result_doc['submitted_at'].isoformat()
             
-            print(f"✅ Mock test result saved in Firebase: {result_data['user_email']}")
+            print(f"[OK] Mock test result saved in Firebase: {result_data['user_email']}")
             return result_data
             
         except Exception as e:
-            print(f"❌ Error saving mock test result in Firebase: {e}")
+            print(f"[ERR] Error saving mock test result in Firebase: {e}")
             raise Exception(f"Failed to save mock test result: {str(e)}")
     
     async def get_mock_test_results(self, user_email: str = None) -> List[Dict[str, Any]]:
@@ -380,7 +380,7 @@ class FirebaseService:
             return results
             
         except Exception as e:
-            print(f"❌ Error getting mock test results from Firebase: {e}")
+            print(f"[ERR] Error getting mock test results from Firebase: {e}")
             return []
     
     # ===== INTERVIEW SCHEDULING =====
@@ -410,11 +410,11 @@ class FirebaseService:
             interview_data['id'] = interview_id
             interview_data['created_at'] = interview_doc['created_at'].isoformat()
             
-            print(f"✅ Interview scheduled in Firebase: {interview_data['email']}")
+            print(f"[OK] Interview scheduled in Firebase: {interview_data['email']}")
             return interview_data
             
         except Exception as e:
-            print(f"❌ Error scheduling interview in Firebase: {e}")
+            print(f"[ERR] Error scheduling interview in Firebase: {e}")
             raise Exception(f"Failed to schedule interview: {str(e)}")
     
     async def get_interviews(self, email: str = None) -> List[Dict[str, Any]]:
@@ -444,7 +444,7 @@ class FirebaseService:
             return interviews
             
         except Exception as e:
-            print(f"❌ Error getting interviews from Firebase: {e}")
+            print(f"[ERR] Error getting interviews from Firebase: {e}")
             return []
 
 # Create a global instance
